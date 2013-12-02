@@ -15,7 +15,6 @@
 		CBF9689D184CE4F500978C2F /* smcAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = CBF9689C184CE4F500978C2F /* smcAppDelegate.m */; };
 		CBF968A0184CE4F500978C2F /* Main_iPhone.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CBF9689E184CE4F500978C2F /* Main_iPhone.storyboard */; };
 		CBF968A3184CE4F500978C2F /* Main_iPad.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CBF968A1184CE4F500978C2F /* Main_iPad.storyboard */; };
-		CBF968A6184CE4F500978C2F /* smcViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CBF968A5184CE4F500978C2F /* smcViewController.m */; };
 		CBF968A8184CE4F500978C2F /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CBF968A7184CE4F500978C2F /* Images.xcassets */; };
 		CBF968AF184CE4F600978C2F /* XCTest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CBF968AE184CE4F600978C2F /* XCTest.framework */; };
 		CBF968B0184CE4F600978C2F /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CBF9688C184CE4F500978C2F /* Foundation.framework */; };
@@ -47,8 +46,6 @@
 		CBF9689C184CE4F500978C2F /* smcAppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = smcAppDelegate.m; sourceTree = "<group>"; };
 		CBF9689F184CE4F500978C2F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main_iPhone.storyboard; sourceTree = "<group>"; };
 		CBF968A2184CE4F500978C2F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main_iPad.storyboard; sourceTree = "<group>"; };
-		CBF968A4184CE4F500978C2F /* smcViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = smcViewController.h; sourceTree = "<group>"; };
-		CBF968A5184CE4F500978C2F /* smcViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = smcViewController.m; sourceTree = "<group>"; };
 		CBF968A7184CE4F500978C2F /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		CBF968AD184CE4F600978C2F /* smcTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = smcTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		CBF968AE184CE4F600978C2F /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
@@ -118,8 +115,6 @@
 				CBF9689C184CE4F500978C2F /* smcAppDelegate.m */,
 				CBF9689E184CE4F500978C2F /* Main_iPhone.storyboard */,
 				CBF968A1184CE4F500978C2F /* Main_iPad.storyboard */,
-				CBF968A4184CE4F500978C2F /* smcViewController.h */,
-				CBF968A5184CE4F500978C2F /* smcViewController.m */,
 				CBF968A7184CE4F500978C2F /* Images.xcassets */,
 				CBF96893184CE4F500978C2F /* Supporting Files */,
 			);
@@ -254,7 +249,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				CBF968A6184CE4F500978C2F /* smcViewController.m in Sources */,
 				CBF9689D184CE4F500978C2F /* smcAppDelegate.m in Sources */,
 				CBF96899184CE4F500978C2F /* main.m in Sources */,
 			);
