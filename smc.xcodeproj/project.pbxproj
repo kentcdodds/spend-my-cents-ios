@@ -7,6 +7,11 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		CB26B8A91852E60B0049332F /* Product.m in Sources */ = {isa = PBXBuildFile; fileRef = CB26B8A81852E60B0049332F /* Product.m */; };
+		CB2E92E71853D60C00153780 /* MainViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CB2E92E61853D60C00153780 /* MainViewController.m */; };
+		CB49C0451857B27F000B771D /* ProductCardView.m in Sources */ = {isa = PBXBuildFile; fileRef = CB49C0441857B27F000B771D /* ProductCardView.m */; };
+		CB49C0481857B7F1000B771D /* no-image-available.png in Resources */ = {isa = PBXBuildFile; fileRef = CB49C0471857B7F1000B771D /* no-image-available.png */; };
+		CB49C04C1857BB9B000B771D /* ProductCardCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = CB49C04B1857BB9B000B771D /* ProductCardCollectionViewCell.m */; };
 		CBF9688D184CE4F500978C2F /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CBF9688C184CE4F500978C2F /* Foundation.framework */; };
 		CBF9688F184CE4F500978C2F /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CBF9688E184CE4F500978C2F /* CoreGraphics.framework */; };
 		CBF96891184CE4F500978C2F /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CBF96890184CE4F500978C2F /* UIKit.framework */; };
@@ -34,6 +39,15 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		CB26B8A71852E60B0049332F /* Product.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Product.h; path = model/Product.h; sourceTree = "<group>"; };
+		CB26B8A81852E60B0049332F /* Product.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Product.m; path = model/Product.m; sourceTree = "<group>"; };
+		CB2E92E51853D60C00153780 /* MainViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MainViewController.h; path = controller/MainViewController.h; sourceTree = "<group>"; };
+		CB2E92E61853D60C00153780 /* MainViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MainViewController.m; path = controller/MainViewController.m; sourceTree = "<group>"; };
+		CB49C0431857B27F000B771D /* ProductCardView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ProductCardView.h; path = view/ProductCardView.h; sourceTree = "<group>"; };
+		CB49C0441857B27F000B771D /* ProductCardView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ProductCardView.m; path = view/ProductCardView.m; sourceTree = "<group>"; };
+		CB49C0471857B7F1000B771D /* no-image-available.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "no-image-available.png"; path = "images/no-image-available.png"; sourceTree = "<group>"; };
+		CB49C04A1857BB9B000B771D /* ProductCardCollectionViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ProductCardCollectionViewCell.h; path = view/ProductCardCollectionViewCell.h; sourceTree = "<group>"; };
+		CB49C04B1857BB9B000B771D /* ProductCardCollectionViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ProductCardCollectionViewCell.m; path = view/ProductCardCollectionViewCell.m; sourceTree = "<group>"; };
 		CBF96889184CE4F500978C2F /* smc.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = smc.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CBF9688C184CE4F500978C2F /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		CBF9688E184CE4F500978C2F /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -78,6 +92,43 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		CB26B8AA1852E6130049332F /* model */ = {
+			isa = PBXGroup;
+			children = (
+				CB26B8A71852E60B0049332F /* Product.h */,
+				CB26B8A81852E60B0049332F /* Product.m */,
+			);
+			name = model;
+			sourceTree = "<group>";
+		};
+		CB2E92E41853C2E000153780 /* controller */ = {
+			isa = PBXGroup;
+			children = (
+				CB2E92E51853D60C00153780 /* MainViewController.h */,
+				CB2E92E61853D60C00153780 /* MainViewController.m */,
+			);
+			name = controller;
+			sourceTree = "<group>";
+		};
+		CB49C0461857B524000B771D /* view */ = {
+			isa = PBXGroup;
+			children = (
+				CB49C0431857B27F000B771D /* ProductCardView.h */,
+				CB49C0441857B27F000B771D /* ProductCardView.m */,
+				CB49C04A1857BB9B000B771D /* ProductCardCollectionViewCell.h */,
+				CB49C04B1857BB9B000B771D /* ProductCardCollectionViewCell.m */,
+			);
+			name = view;
+			sourceTree = "<group>";
+		};
+		CB49C0491857B7F6000B771D /* images */ = {
+			isa = PBXGroup;
+			children = (
+				CB49C0471857B7F1000B771D /* no-image-available.png */,
+			);
+			name = images;
+			sourceTree = "<group>";
+		};
 		CBF96880184CE4F500978C2F = {
 			isa = PBXGroup;
 			children = (
@@ -116,7 +167,11 @@
 				CBF9689E184CE4F500978C2F /* Main_iPhone.storyboard */,
 				CBF968A1184CE4F500978C2F /* Main_iPad.storyboard */,
 				CBF968A7184CE4F500978C2F /* Images.xcassets */,
+				CB49C0491857B7F6000B771D /* images */,
 				CBF96893184CE4F500978C2F /* Supporting Files */,
+				CB26B8AA1852E6130049332F /* model */,
+				CB2E92E41853C2E000153780 /* controller */,
+				CB49C0461857B524000B771D /* view */,
 			);
 			path = smc;
 			sourceTree = "<group>";
@@ -227,6 +282,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CB49C0481857B7F1000B771D /* no-image-available.png in Resources */,
 				CBF968A3184CE4F500978C2F /* Main_iPad.storyboard in Resources */,
 				CBF968A8184CE4F500978C2F /* Images.xcassets in Resources */,
 				CBF968A0184CE4F500978C2F /* Main_iPhone.storyboard in Resources */,
@@ -249,8 +305,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CB26B8A91852E60B0049332F /* Product.m in Sources */,
 				CBF9689D184CE4F500978C2F /* smcAppDelegate.m in Sources */,
+				CB49C04C1857BB9B000B771D /* ProductCardCollectionViewCell.m in Sources */,
+				CB49C0451857B27F000B771D /* ProductCardView.m in Sources */,
 				CBF96899184CE4F500978C2F /* main.m in Sources */,
+				CB2E92E71853D60C00153780 /* MainViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -469,6 +529,7 @@
 				CBF968C0184CE4F600978C2F /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		CBF968C1184CE4F600978C2F /* Build configuration list for PBXNativeTarget "smcTests" */ = {
 			isa = XCConfigurationList;
@@ -477,6 +538,7 @@
 				CBF968C3184CE4F600978C2F /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
