@@ -12,6 +12,7 @@
 		CB49C0451857B27F000B771D /* ProductCardView.m in Sources */ = {isa = PBXBuildFile; fileRef = CB49C0441857B27F000B771D /* ProductCardView.m */; };
 		CB49C0481857B7F1000B771D /* no-image-available.png in Resources */ = {isa = PBXBuildFile; fileRef = CB49C0471857B7F1000B771D /* no-image-available.png */; };
 		CB49C04C1857BB9B000B771D /* ProductCardCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = CB49C04B1857BB9B000B771D /* ProductCardCollectionViewCell.m */; };
+		CBCCDF061858B688002DA193 /* ProductModalViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CBCCDF051858B688002DA193 /* ProductModalViewController.m */; };
 		CBF9688D184CE4F500978C2F /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CBF9688C184CE4F500978C2F /* Foundation.framework */; };
 		CBF9688F184CE4F500978C2F /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CBF9688E184CE4F500978C2F /* CoreGraphics.framework */; };
 		CBF96891184CE4F500978C2F /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CBF96890184CE4F500978C2F /* UIKit.framework */; };
@@ -48,6 +49,8 @@
 		CB49C0471857B7F1000B771D /* no-image-available.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "no-image-available.png"; path = "images/no-image-available.png"; sourceTree = "<group>"; };
 		CB49C04A1857BB9B000B771D /* ProductCardCollectionViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ProductCardCollectionViewCell.h; path = view/ProductCardCollectionViewCell.h; sourceTree = "<group>"; };
 		CB49C04B1857BB9B000B771D /* ProductCardCollectionViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ProductCardCollectionViewCell.m; path = view/ProductCardCollectionViewCell.m; sourceTree = "<group>"; };
+		CBCCDF041858B688002DA193 /* ProductModalViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ProductModalViewController.h; path = controller/ProductModalViewController.h; sourceTree = "<group>"; };
+		CBCCDF051858B688002DA193 /* ProductModalViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ProductModalViewController.m; path = controller/ProductModalViewController.m; sourceTree = "<group>"; };
 		CBF96889184CE4F500978C2F /* smc.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = smc.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CBF9688C184CE4F500978C2F /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		CBF9688E184CE4F500978C2F /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -106,6 +109,8 @@
 			children = (
 				CB2E92E51853D60C00153780 /* MainViewController.h */,
 				CB2E92E61853D60C00153780 /* MainViewController.m */,
+				CBCCDF041858B688002DA193 /* ProductModalViewController.h */,
+				CBCCDF051858B688002DA193 /* ProductModalViewController.m */,
 			);
 			name = controller;
 			sourceTree = "<group>";
@@ -305,6 +310,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CBCCDF061858B688002DA193 /* ProductModalViewController.m in Sources */,
 				CB26B8A91852E60B0049332F /* Product.m in Sources */,
 				CBF9689D184CE4F500978C2F /* smcAppDelegate.m in Sources */,
 				CB49C04C1857BB9B000B771D /* ProductCardCollectionViewCell.m in Sources */,

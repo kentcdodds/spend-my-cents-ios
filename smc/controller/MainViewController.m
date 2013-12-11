@@ -9,6 +9,7 @@
 #import "MainViewController.h"
 #import "ProductCardCollectionViewCell.h"
 #import "ProductCardView.h"
+#import "ProductModalViewController.h"
 
 @interface MainViewController () <UICollectionViewDataSource, UIGestureRecognizerDelegate>
 @property (strong, nonatomic) IBOutlet UITextField *searchField;
@@ -72,7 +73,9 @@
             } else {
                 self.products = products;
             }
-            [self.productsCollectionView reloadData];
+            dispatch_async(dispatch_get_main_queue(), ^{
+                [self.productsCollectionView reloadData];
+            });
         } else {
             NSLog(@"There was problem with the response");
         }
@@ -89,7 +92,9 @@
     NSString *formattedUrl = [NSString stringWithFormat:urlTemplate, category, price, self.itemPage];
     NSLog(@"%@", formattedUrl);
     NSURL *url = [NSURL URLWithString:formattedUrl];
+    [[UIApplication sharedApplication] setNetworkActivityIndicatorVisible:YES];
     NSURLSessionDataTask *task = [session dataTaskWithURL:url completionHandler:^(NSData *data, NSURLResponse *response, NSError *error) {
+        [[UIApplication sharedApplication] setNetworkActivityIndicatorVisible:NO];
         [self handleReturnedData:data resp:response err:error append:self.itemPage != 1];
     }];
     [task resume];
@@ -99,38 +104,13 @@
     CGPoint location = [gesture locationInView:self.productsCollectionView];
     NSIndexPath *indexPath = [self.productsCollectionView indexPathForItemAtPoint:location];
     
-    if (indexPath) {
-        if (indexPath.item > [self.products count]) {
-            return;
-        }
-        ProductCardCollectionViewCell *cell = (ProductCardCollectionViewCell *)[self.productsCollectionView dequeueReusableCellWithReuseIdentifier:@"ProductCardCell" forIndexPath:indexPath];
-        
-        [UIView transitionWithView:cell duration:0.3f
-                           options:UIViewAnimationOptionTransitionFlipFromRight|UIViewAnimationOptionCurveEaseInOut
-                        animations:^{
-                            NSLog(@"Animation");
-                            NSMutableArray *indexPaths = [NSMutableArray arrayWithArray:@[indexPath, [NSIndexPath indexPathWithIndex:self.selectedCardIndex]]];
-                            NSArray *updateIndexPaths = [NSArray arrayWithArray:indexPaths];
-                            if (self.selectedCardIndex == indexPath.item) {
-                                self.selectedCardIndex = -1;
-                                updateIndexPaths = @[indexPath];
-                            } else {
-                                if (self.selectedCardIndex == -1) {
-                                    updateIndexPaths = @[indexPath];
-                                }
-                                self.selectedCardIndex = indexPath.item;
-                            }
-//                            [self.productsCollectionView reloadItemsAtIndexPaths:updateIndexPaths];
-                            [self.productsCollectionView reloadData];
-                        } completion:NULL];
-    }
-}
-
-- (void) setCellContent: (ProductCardCollectionViewCell *)cell withProduct:(NSDictionary *)product {
-    if (product[@"ASIN"]) {
-        cell.productCardView.label.text = [NSString stringWithFormat:@"%@\n\nMade by: %@\n\nASIN: %@", product[@"title"], product[@"manufacturer"], product[@"ASIN"]];
-    } else {
-        cell.productCardView.label.text = @"No Information Available";
+    if (indexPath && indexPath.item < [self.products count]) {
+        UIStoryboard *storyBoard = [self storyboard];
+        ProductModalViewController *modal  = [storyBoard instantiateViewControllerWithIdentifier:@"ProductModalViewController"];
+        NSDictionary *product = self.products[indexPath.item];
+        modal.product = product;
+        modal.productImage = self.imageCache[product[@"imageUrl"]];
+        [self presentViewController:modal animated:YES completion:nil];
     }
 }
 
@@ -165,24 +145,12 @@
 
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath {
     ProductCardCollectionViewCell *cell = (ProductCardCollectionViewCell *)[collectionView dequeueReusableCellWithReuseIdentifier:@"ProductCardCell" forIndexPath:indexPath];
-    ProductCardView *pv = (ProductCardView *) cell.productCardView;
-    
     if (indexPath.item >= [self.products count]) {
-        pv.imageView.alpha = 0;
-        pv.label.alpha = 0;
-        pv.button.alpha = 1;
+        cell.productCardView.imageView.alpha = 0;
+        cell.productCardView.button.alpha = 1;
     } else {
         NSDictionary *product = self.products[indexPath.item];
         NSLog(@"%d - %@", indexPath.item, product[@"ASIN"]);
-        
-        if (indexPath.item == self.selectedCardIndex) {
-            pv.imageView.alpha = 0;
-            pv.label.alpha = 1;
-        } else {
-            pv.label.alpha = 0;
-            pv.imageView.alpha = 1;
-        }
-        [self setCellContent:cell withProduct:product];
         [self setCellImage:cell withProduct:product];
     }
     return cell;

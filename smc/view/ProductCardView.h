@@ -12,7 +12,6 @@
 
 @property (nonatomic, getter = isFaceUp) BOOL faceUp;
 @property (weak, nonatomic) IBOutlet UIImageView *imageView;
-@property (weak, nonatomic) IBOutlet UILabel *label;
 @property (weak, nonatomic) IBOutlet UIButton *button;
 
 @end

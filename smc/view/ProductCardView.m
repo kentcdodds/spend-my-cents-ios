@@ -16,13 +16,6 @@
 
 @implementation ProductCardView
 
-#pragma mark - Properties
-
-- (void)setFaceUp:(BOOL)faceUp {
-    _faceUp = faceUp;
-    [self setNeedsDisplay];
-}
-
 #pragma mark - Drawing
 
 - (void)drawRect:(CGRect)rect {
