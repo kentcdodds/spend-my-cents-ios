@@ -10,18 +10,18 @@
 
 @interface CategorySelectionViewController () <UIPickerViewDelegate, UIPickerViewDataSource>
 @property (weak, nonatomic) IBOutlet UIPickerView *categorySelection;
-@property (nonatomic) int selectedCategoryIndex;
 @end
 
 @implementation CategorySelectionViewController
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-	// Do any additional setup after loading the view.
+	
+    [self.categorySelection selectRow:self.selectedCategoryIndex inComponent:0 animated:NO];
 }
 
 - (IBAction)doneTapped:(id)sender {
-    self.delegate.selectedCategoryIndex = self.selectedCategoryIndex;
+    [self.delegate setCategoryIndex: self.selectedCategoryIndex];
     [self dismissViewControllerAnimated:YES completion:Nil];
 }
 

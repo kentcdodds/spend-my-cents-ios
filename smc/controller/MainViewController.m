@@ -12,16 +12,22 @@
 #import "ProductModalViewController.h"
 #import "CategorySelectionViewController.h"
 
-@interface MainViewController () <UICollectionViewDataSource, UIGestureRecognizerDelegate>
+@interface MainViewController () <UICollectionViewDataSource, UIGestureRecognizerDelegate, SetCategoryDelegate>
+
 @property (strong, nonatomic) IBOutlet UITextField *searchField;
-@property (strong, nonatomic) NSArray *products;
-@property (weak, nonatomic) IBOutlet UICollectionView *productsCollectionView;
-@property (nonatomic) int itemPage;
-@property (nonatomic) dispatch_queue_t downloadQueue;
-@property (strong, nonatomic) NSMutableDictionary *imageCache;
-@property (nonatomic) int selectedCardIndex;
-@property (strong, nonatomic) NSArray *categories;
 @property (weak, nonatomic) IBOutlet UIButton *categoryButton;
+@property (weak, nonatomic) IBOutlet UICollectionView *productsCollectionView;
+
+@property (strong, nonatomic) NSArray *products;
+@property (strong, nonatomic) NSMutableDictionary *imageCache;
+@property (strong, nonatomic) NSArray *categories;
+
+@property (nonatomic) int itemPage;
+@property (nonatomic) int selectedCardIndex;
+@property (nonatomic) int selectedCategoryIndex;
+
+@property (nonatomic) dispatch_queue_t downloadQueue;
+
 @end
 
 @implementation MainViewController
@@ -42,38 +48,6 @@
     return _imageCache;
 }
 
-- (id)init {
-    self = [super init];
-    if (self) {
-        self.categories = @[@"All", @"Apparel", @"Appliances", @"Arts and Crafts", @"Automotive",
-                            @"Baby", @"Beauty", @"Blended", @"Books",
-                            @"Classical", @"Collectibles",
-                            @"DVD", @"Digital Music",
-                            @"Electronics",
-                            @"Gift Cards", @"Gourmet Food", @"Grocery",
-                            @"Health Personal Care", @"Home Garden",
-                            @"Industrial",
-                            @"Jewelry",
-                            @"Kindle Store", @"Kitchen",
-                            @"Lawn And Garden",
-                            @"Marketplace", @"MP3 Downloads", @"Magazines", @"Miscellaneous",
-                            @"Music", @"Music Tracks", @"Musical Instruments", @"Mobile Apps",
-                            @"Office Products", @"Outdoor Living",
-                            @"PC Hardware", @"Pet Supplies", @"Photo",
-                            @"Shoes", @"Software", @"Sporting Goods",
-                            @"Tools", @"Toys",
-                            @"Unbox Video",
-                            @"VHS", @"Video", @"Video Games",
-                            @"Watches", @"Wireless", @"Wireless Accessories"
-                            ];
-    }
-    return self;
-}
-
-- (void)selectedCategoryIndex:(int)selectedCategoryIndex {
-    _selectedCategoryIndex = selectedCategoryIndex;
-}
-
 - (void)viewDidLoad {
     [super viewDidLoad];
     
@@ -81,7 +55,36 @@
     if (([[[UIDevice currentDevice] systemVersion] doubleValue] >= 4.1)) {
         self.searchField.keyboardType = UIKeyboardTypeDecimalPad;
     }
+    self.categories = @[@"All", @"Apparel", @"Appliances", @"Arts and Crafts", @"Automotive",
+                        @"Baby", @"Beauty", @"Blended", @"Books",
+                        @"Classical", @"Collectibles",
+                        @"DVD", @"Digital Music",
+                        @"Electronics",
+                        @"Gift Cards", @"Gourmet Food", @"Grocery",
+                        @"Health Personal Care", @"Home Garden",
+                        @"Industrial",
+                        @"Jewelry",
+                        @"Kindle Store", @"Kitchen",
+                        @"Lawn And Garden",
+                        @"Marketplace", @"MP3 Downloads", @"Magazines", @"Miscellaneous",
+                        @"Music", @"Music Tracks", @"Musical Instruments", @"Mobile Apps",
+                        @"Office Products", @"Outdoor Living",
+                        @"PC Hardware", @"Pet Supplies", @"Photo",
+                        @"Shoes", @"Software", @"Sporting Goods",
+                        @"Tools", @"Toys",
+                        @"Unbox Video",
+                        @"VHS", @"Video", @"Video Games",
+                        @"Watches", @"Wireless", @"Wireless Accessories"
+                        ];
+    
     self.selectedCardIndex = -1;
+}
+
+- (void)setCategoryIndex:(int)index {
+    self.selectedCategoryIndex = index;
+    if (self.selectedCategoryIndex > -1) {
+        [self.categoryButton setTitle:self.categories[self.selectedCategoryIndex] forState:UIControlStateNormal];
+    }
 }
 
 - (IBAction)searchButtonPressed:(id)sender {
@@ -145,8 +148,9 @@
     UIStoryboard *storyBoard = [self storyboard];
     CategorySelectionViewController *modal  = [storyBoard instantiateViewControllerWithIdentifier:@"CategorySelectionView"];
     modal.categories = self.categories;
+    modal.selectedCategoryIndex = self.selectedCategoryIndex;
+    modal.delegate = self;
     [self presentViewController:modal animated:YES completion:nil];
-    
 }
 
 - (IBAction)cardTapped:(UITapGestureRecognizer *)gesture {
@@ -182,7 +186,8 @@
 
 - (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section {
     int all = [self.products count];
-    if (all > 0 && self.itemPage < 6) {
+    int divisibleByTen = !fmod(all, 10);
+    if (all > 0 && self.itemPage < 5 && divisibleByTen) {
         all++;
     }
     return all;

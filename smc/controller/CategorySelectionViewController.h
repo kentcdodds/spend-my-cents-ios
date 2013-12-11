@@ -9,9 +9,18 @@
 #import <UIKit/UIKit.h>
 #import "MainViewController.h"
 
+@protocol SetCategoryDelegate;
+
 @interface CategorySelectionViewController : UIViewController
 
-@property (strong, nonatomic) MainViewController *delegate;
+@property (strong, nonatomic) id <SetCategoryDelegate> delegate;
 @property (weak, nonatomic) NSArray *categories;
+@property (nonatomic) int selectedCategoryIndex;
+
+@end
+
+@protocol SetCategoryDelegate <NSObject>
+
+- (void)setCategoryIndex:(int)index;
 
 @end

@@ -8,10 +8,6 @@
 
 #import "ProductCardCollectionViewCell.h"
 
-@interface ProductCardCollectionViewCell()
-
-@end
-
 @implementation ProductCardCollectionViewCell
 
 @end
