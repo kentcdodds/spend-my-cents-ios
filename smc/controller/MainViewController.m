@@ -10,6 +10,7 @@
 #import "ProductCardCollectionViewCell.h"
 #import "ProductCardView.h"
 #import "ProductModalViewController.h"
+#import "CategorySelectionViewController.h"
 
 @interface MainViewController () <UICollectionViewDataSource, UIGestureRecognizerDelegate>
 @property (strong, nonatomic) IBOutlet UITextField *searchField;
@@ -19,6 +20,8 @@
 @property (nonatomic) dispatch_queue_t downloadQueue;
 @property (strong, nonatomic) NSMutableDictionary *imageCache;
 @property (nonatomic) int selectedCardIndex;
+@property (strong, nonatomic) NSArray *categories;
+@property (weak, nonatomic) IBOutlet UIButton *categoryButton;
 @end
 
 @implementation MainViewController
@@ -37,6 +40,38 @@
     }
     
     return _imageCache;
+}
+
+- (id)init {
+    self = [super init];
+    if (self) {
+        self.categories = @[@"All", @"Apparel", @"Appliances", @"Arts and Crafts", @"Automotive",
+                            @"Baby", @"Beauty", @"Blended", @"Books",
+                            @"Classical", @"Collectibles",
+                            @"DVD", @"Digital Music",
+                            @"Electronics",
+                            @"Gift Cards", @"Gourmet Food", @"Grocery",
+                            @"Health Personal Care", @"Home Garden",
+                            @"Industrial",
+                            @"Jewelry",
+                            @"Kindle Store", @"Kitchen",
+                            @"Lawn And Garden",
+                            @"Marketplace", @"MP3 Downloads", @"Magazines", @"Miscellaneous",
+                            @"Music", @"Music Tracks", @"Musical Instruments", @"Mobile Apps",
+                            @"Office Products", @"Outdoor Living",
+                            @"PC Hardware", @"Pet Supplies", @"Photo",
+                            @"Shoes", @"Software", @"Sporting Goods",
+                            @"Tools", @"Toys",
+                            @"Unbox Video",
+                            @"VHS", @"Video", @"Video Games",
+                            @"Watches", @"Wireless", @"Wireless Accessories"
+                            ];
+    }
+    return self;
+}
+
+- (void)selectedCategoryIndex:(int)selectedCategoryIndex {
+    _selectedCategoryIndex = selectedCategoryIndex;
 }
 
 - (void)viewDidLoad {
@@ -87,7 +122,13 @@
 -(void)doSearch {
     NSURLSession *session = [NSURLSession sharedSession];
     int price = [self.searchField.text doubleValue] * 100;
-    NSString *category = @"All";
+    NSString *category = self.categories[self.selectedCategoryIndex];
+    if (!category) {
+        category = @"All";
+    } else {
+        category = [category stringByReplacingOccurrencesOfString:@" "
+                                             withString:@""];
+    }
     NSString *urlTemplate = @"http://www.spendmycents.com/products?simplifyResponse=true&searchIndex=%@&price=%d&itemPage=%d";
     NSString *formattedUrl = [NSString stringWithFormat:urlTemplate, category, price, self.itemPage];
     NSLog(@"%@", formattedUrl);
@@ -98,6 +139,14 @@
         [self handleReturnedData:data resp:response err:error append:self.itemPage != 1];
     }];
     [task resume];
+}
+
+- (IBAction)categoryTapped:(id)sender {
+    UIStoryboard *storyBoard = [self storyboard];
+    CategorySelectionViewController *modal  = [storyBoard instantiateViewControllerWithIdentifier:@"CategorySelectionView"];
+    modal.categories = self.categories;
+    [self presentViewController:modal animated:YES completion:nil];
+    
 }
 
 - (IBAction)cardTapped:(UITapGestureRecognizer *)gesture {

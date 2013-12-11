@@ -10,4 +10,7 @@
 
 @interface MainViewController : UIViewController
 
+@property (nonatomic, setter = selectedCategoryIndex:) int selectedCategoryIndex;
+- (void)selectedCategoryIndex:(int)selectedCategoryIndex;
+
 @end

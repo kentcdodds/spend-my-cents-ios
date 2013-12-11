@@ -13,6 +13,17 @@
 		CB49C0481857B7F1000B771D /* no-image-available.png in Resources */ = {isa = PBXBuildFile; fileRef = CB49C0471857B7F1000B771D /* no-image-available.png */; };
 		CB49C04C1857BB9B000B771D /* ProductCardCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = CB49C04B1857BB9B000B771D /* ProductCardCollectionViewCell.m */; };
 		CBCCDF061858B688002DA193 /* ProductModalViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CBCCDF051858B688002DA193 /* ProductModalViewController.m */; };
+		CBCCDF301858D49A002DA193 /* icon-29.png in Resources */ = {isa = PBXBuildFile; fileRef = CBCCDF261858D49A002DA193 /* icon-29.png */; };
+		CBCCDF311858D49A002DA193 /* icon-40.png in Resources */ = {isa = PBXBuildFile; fileRef = CBCCDF271858D49A002DA193 /* icon-40.png */; };
+		CBCCDF321858D49A002DA193 /* icon-58.png in Resources */ = {isa = PBXBuildFile; fileRef = CBCCDF281858D49A002DA193 /* icon-58.png */; };
+		CBCCDF331858D49A002DA193 /* icon-60.png in Resources */ = {isa = PBXBuildFile; fileRef = CBCCDF291858D49A002DA193 /* icon-60.png */; };
+		CBCCDF341858D49A002DA193 /* icon-76.png in Resources */ = {isa = PBXBuildFile; fileRef = CBCCDF2A1858D49A002DA193 /* icon-76.png */; };
+		CBCCDF351858D49A002DA193 /* icon-80.png in Resources */ = {isa = PBXBuildFile; fileRef = CBCCDF2B1858D49A002DA193 /* icon-80.png */; };
+		CBCCDF361858D49A002DA193 /* icon-120.png in Resources */ = {isa = PBXBuildFile; fileRef = CBCCDF2C1858D49A002DA193 /* icon-120.png */; };
+		CBCCDF371858D49A002DA193 /* icon-152.png in Resources */ = {isa = PBXBuildFile; fileRef = CBCCDF2D1858D49A002DA193 /* icon-152.png */; };
+		CBCCDF381858D49A002DA193 /* icon-256.png in Resources */ = {isa = PBXBuildFile; fileRef = CBCCDF2E1858D49A002DA193 /* icon-256.png */; };
+		CBCCDF391858D49A002DA193 /* logo.png in Resources */ = {isa = PBXBuildFile; fileRef = CBCCDF2F1858D49A002DA193 /* logo.png */; };
+		CBCCDF3C1858D784002DA193 /* CategorySelectionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CBCCDF3B1858D784002DA193 /* CategorySelectionViewController.m */; };
 		CBF9688D184CE4F500978C2F /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CBF9688C184CE4F500978C2F /* Foundation.framework */; };
 		CBF9688F184CE4F500978C2F /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CBF9688E184CE4F500978C2F /* CoreGraphics.framework */; };
 		CBF96891184CE4F500978C2F /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CBF96890184CE4F500978C2F /* UIKit.framework */; };
@@ -51,7 +62,19 @@
 		CB49C04B1857BB9B000B771D /* ProductCardCollectionViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ProductCardCollectionViewCell.m; path = view/ProductCardCollectionViewCell.m; sourceTree = "<group>"; };
 		CBCCDF041858B688002DA193 /* ProductModalViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ProductModalViewController.h; path = controller/ProductModalViewController.h; sourceTree = "<group>"; };
 		CBCCDF051858B688002DA193 /* ProductModalViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ProductModalViewController.m; path = controller/ProductModalViewController.m; sourceTree = "<group>"; };
-		CBF96889184CE4F500978C2F /* smc.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = smc.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		CBCCDF261858D49A002DA193 /* icon-29.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "icon-29.png"; path = "images/icon-29.png"; sourceTree = "<group>"; };
+		CBCCDF271858D49A002DA193 /* icon-40.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "icon-40.png"; path = "images/icon-40.png"; sourceTree = "<group>"; };
+		CBCCDF281858D49A002DA193 /* icon-58.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "icon-58.png"; path = "images/icon-58.png"; sourceTree = "<group>"; };
+		CBCCDF291858D49A002DA193 /* icon-60.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "icon-60.png"; path = "images/icon-60.png"; sourceTree = "<group>"; };
+		CBCCDF2A1858D49A002DA193 /* icon-76.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "icon-76.png"; path = "images/icon-76.png"; sourceTree = "<group>"; };
+		CBCCDF2B1858D49A002DA193 /* icon-80.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "icon-80.png"; path = "images/icon-80.png"; sourceTree = "<group>"; };
+		CBCCDF2C1858D49A002DA193 /* icon-120.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "icon-120.png"; path = "images/icon-120.png"; sourceTree = "<group>"; };
+		CBCCDF2D1858D49A002DA193 /* icon-152.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "icon-152.png"; path = "images/icon-152.png"; sourceTree = "<group>"; };
+		CBCCDF2E1858D49A002DA193 /* icon-256.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "icon-256.png"; path = "images/icon-256.png"; sourceTree = "<group>"; };
+		CBCCDF2F1858D49A002DA193 /* logo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = logo.png; path = images/logo.png; sourceTree = "<group>"; };
+		CBCCDF3A1858D784002DA193 /* CategorySelectionViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CategorySelectionViewController.h; path = controller/CategorySelectionViewController.h; sourceTree = "<group>"; };
+		CBCCDF3B1858D784002DA193 /* CategorySelectionViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CategorySelectionViewController.m; path = controller/CategorySelectionViewController.m; sourceTree = "<group>"; };
+		CBF96889184CE4F500978C2F /* SMC.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SMC.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CBF9688C184CE4F500978C2F /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		CBF9688E184CE4F500978C2F /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
 		CBF96890184CE4F500978C2F /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
@@ -111,6 +134,8 @@
 				CB2E92E61853D60C00153780 /* MainViewController.m */,
 				CBCCDF041858B688002DA193 /* ProductModalViewController.h */,
 				CBCCDF051858B688002DA193 /* ProductModalViewController.m */,
+				CBCCDF3A1858D784002DA193 /* CategorySelectionViewController.h */,
+				CBCCDF3B1858D784002DA193 /* CategorySelectionViewController.m */,
 			);
 			name = controller;
 			sourceTree = "<group>";
@@ -129,6 +154,16 @@
 		CB49C0491857B7F6000B771D /* images */ = {
 			isa = PBXGroup;
 			children = (
+				CBCCDF261858D49A002DA193 /* icon-29.png */,
+				CBCCDF271858D49A002DA193 /* icon-40.png */,
+				CBCCDF281858D49A002DA193 /* icon-58.png */,
+				CBCCDF291858D49A002DA193 /* icon-60.png */,
+				CBCCDF2A1858D49A002DA193 /* icon-76.png */,
+				CBCCDF2B1858D49A002DA193 /* icon-80.png */,
+				CBCCDF2C1858D49A002DA193 /* icon-120.png */,
+				CBCCDF2D1858D49A002DA193 /* icon-152.png */,
+				CBCCDF2E1858D49A002DA193 /* icon-256.png */,
+				CBCCDF2F1858D49A002DA193 /* logo.png */,
 				CB49C0471857B7F1000B771D /* no-image-available.png */,
 			);
 			name = images;
@@ -147,7 +182,7 @@
 		CBF9688A184CE4F500978C2F /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				CBF96889184CE4F500978C2F /* smc.app */,
+				CBF96889184CE4F500978C2F /* SMC.app */,
 				CBF968AD184CE4F600978C2F /* smcTests.xctest */,
 			);
 			name = Products;
@@ -227,7 +262,7 @@
 			);
 			name = smc;
 			productName = smc;
-			productReference = CBF96889184CE4F500978C2F /* smc.app */;
+			productReference = CBF96889184CE4F500978C2F /* SMC.app */;
 			productType = "com.apple.product-type.application";
 		};
 		CBF968AC184CE4F600978C2F /* smcTests */ = {
@@ -288,10 +323,20 @@
 			buildActionMask = 2147483647;
 			files = (
 				CB49C0481857B7F1000B771D /* no-image-available.png in Resources */,
+				CBCCDF371858D49A002DA193 /* icon-152.png in Resources */,
+				CBCCDF341858D49A002DA193 /* icon-76.png in Resources */,
+				CBCCDF321858D49A002DA193 /* icon-58.png in Resources */,
 				CBF968A3184CE4F500978C2F /* Main_iPad.storyboard in Resources */,
 				CBF968A8184CE4F500978C2F /* Images.xcassets in Resources */,
+				CBCCDF381858D49A002DA193 /* icon-256.png in Resources */,
 				CBF968A0184CE4F500978C2F /* Main_iPhone.storyboard in Resources */,
+				CBCCDF331858D49A002DA193 /* icon-60.png in Resources */,
 				CBF96897184CE4F500978C2F /* InfoPlist.strings in Resources */,
+				CBCCDF361858D49A002DA193 /* icon-120.png in Resources */,
+				CBCCDF391858D49A002DA193 /* logo.png in Resources */,
+				CBCCDF301858D49A002DA193 /* icon-29.png in Resources */,
+				CBCCDF311858D49A002DA193 /* icon-40.png in Resources */,
+				CBCCDF351858D49A002DA193 /* icon-80.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -315,6 +360,7 @@
 				CBF9689D184CE4F500978C2F /* smcAppDelegate.m in Sources */,
 				CB49C04C1857BB9B000B771D /* ProductCardCollectionViewCell.m in Sources */,
 				CB49C0451857B27F000B771D /* ProductCardView.m in Sources */,
+				CBCCDF3C1858D784002DA193 /* CategorySelectionViewController.m in Sources */,
 				CBF96899184CE4F500978C2F /* main.m in Sources */,
 				CB2E92E71853D60C00153780 /* MainViewController.m in Sources */,
 			);
@@ -456,7 +502,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "smc/smc-Prefix.pch";
 				INFOPLIST_FILE = "smc/smc-Info.plist";
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = SMC;
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -469,7 +515,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "smc/smc-Prefix.pch";
 				INFOPLIST_FILE = "smc/smc-Info.plist";
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = SMC;
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;
