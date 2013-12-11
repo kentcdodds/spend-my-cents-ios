@@ -17,7 +17,7 @@
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
                             <collectionView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" minimumZoomScale="0.0" maximumZoomScale="0.0" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="hlB-ao-U9A">
-                                <rect key="frame" x="20" y="157" width="280" height="303"/>
+                                <rect key="frame" x="20" y="157" width="280" height="323"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="20" minimumInteritemSpacing="20" id="oxI-8a-IwU">
@@ -135,7 +135,7 @@
                             <constraint firstItem="fFE-L9-UsC" firstAttribute="bottom" secondItem="s4c-vP-c6R" secondAttribute="bottom" id="Q0p-hP-Ehx"/>
                             <constraint firstItem="fFE-L9-UsC" firstAttribute="top" secondItem="s4c-vP-c6R" secondAttribute="top" id="YcL-PP-DUq"/>
                             <constraint firstItem="hlB-ao-U9A" firstAttribute="trailing" secondItem="P56-e9-G0f" secondAttribute="trailing" id="bRE-Rb-MBy"/>
-                            <constraint firstAttribute="bottom" secondItem="hlB-ao-U9A" secondAttribute="bottom" constant="20" symbolic="YES" id="bbP-ce-q3j"/>
+                            <constraint firstAttribute="bottom" secondItem="hlB-ao-U9A" secondAttribute="bottom" id="bbP-ce-q3j"/>
                             <constraint firstItem="KKJ-1A-acj" firstAttribute="leading" secondItem="fFE-L9-UsC" secondAttribute="leading" id="bd6-EK-WbE"/>
                             <constraint firstItem="hlB-ao-U9A" firstAttribute="leading" secondItem="fFE-L9-UsC" secondAttribute="leading" id="g6V-0c-4fu"/>
                             <constraint firstItem="s4c-vP-c6R" firstAttribute="leading" secondItem="fFE-L9-UsC" secondAttribute="trailing" constant="8" symbolic="YES" id="mCf-38-zyg"/>
@@ -286,10 +286,11 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="JNP-lx-7G1">
-                                <rect key="frame" x="20" y="439" width="280" height="21"/>
+                                <rect key="frame" x="20" y="434" width="114" height="21"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="21" id="lIM-2e-CS5"/>
+                                    <constraint firstAttribute="width" constant="114" id="26R-yb-WB3"/>
+                                    <constraint firstAttribute="height" constant="21" id="fWY-T5-oeu"/>
                                 </constraints>
                                 <attributedString key="attributedText">
                                     <fragment content="Product has no ASIN">
@@ -302,21 +303,31 @@
                                 </attributedString>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jeK-yM-7Hl">
+                                <rect key="frame" x="260" y="430" width="40" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Share">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="share:" destination="kSR-5R-Vnp" eventType="touchUpInside" id="CbN-rd-Ll3"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
+                            <constraint firstItem="JNP-lx-7G1" firstAttribute="leading" secondItem="Ady-dc-tDY" secondAttribute="leading" id="145-Vf-TFd"/>
+                            <constraint firstAttribute="bottom" secondItem="jeK-yM-7Hl" secondAttribute="bottom" constant="20" symbolic="YES" id="4gE-W5-jkB"/>
                             <constraint firstItem="Ady-dc-tDY" firstAttribute="top" secondItem="nX1-l6-YVd" secondAttribute="bottom" constant="8" symbolic="YES" id="6o0-1A-QqZ"/>
                             <constraint firstItem="nX1-l6-YVd" firstAttribute="leading" secondItem="IJl-gD-r4w" secondAttribute="leading" id="Dw3-Hm-eWJ"/>
-                            <constraint firstItem="JNP-lx-7G1" firstAttribute="top" secondItem="Ady-dc-tDY" secondAttribute="bottom" constant="8" symbolic="YES" id="FlC-Kc-jsg"/>
-                            <constraint firstAttribute="bottom" secondItem="JNP-lx-7G1" secondAttribute="bottom" constant="20" symbolic="YES" id="G6A-yc-yZP"/>
+                            <constraint firstItem="jeK-yM-7Hl" firstAttribute="trailing" secondItem="Ady-dc-tDY" secondAttribute="trailing" id="FOa-ny-d5y"/>
+                            <constraint firstItem="JNP-lx-7G1" firstAttribute="top" secondItem="Ady-dc-tDY" secondAttribute="bottom" constant="3" id="J5V-C7-L7B"/>
                             <constraint firstItem="IJl-gD-r4w" firstAttribute="leading" secondItem="pcw-4R-ETP" secondAttribute="leading" constant="20" symbolic="YES" id="MGT-dD-jif"/>
                             <constraint firstItem="zTa-AH-lkg" firstAttribute="top" secondItem="pcw-4R-ETP" secondAttribute="top" constant="19" id="Pog-bX-CMk"/>
                             <constraint firstAttribute="trailing" secondItem="IJl-gD-r4w" secondAttribute="trailing" constant="20" symbolic="YES" id="SPz-mG-yHx"/>
-                            <constraint firstItem="JNP-lx-7G1" firstAttribute="leading" secondItem="Ady-dc-tDY" secondAttribute="leading" id="SUq-JX-dsn"/>
                             <constraint firstItem="Ady-dc-tDY" firstAttribute="trailing" secondItem="nX1-l6-YVd" secondAttribute="trailing" id="bcl-hA-04N"/>
                             <constraint firstItem="IJl-gD-r4w" firstAttribute="top" secondItem="zTa-AH-lkg" secondAttribute="bottom" constant="8" id="fgo-VP-YwT"/>
                             <constraint firstItem="zTa-AH-lkg" firstAttribute="leading" secondItem="pcw-4R-ETP" secondAttribute="leading" id="h2U-kH-9Ta"/>
-                            <constraint firstItem="JNP-lx-7G1" firstAttribute="trailing" secondItem="Ady-dc-tDY" secondAttribute="trailing" id="lrp-oz-is2"/>
                             <constraint firstItem="nX1-l6-YVd" firstAttribute="top" secondItem="IJl-gD-r4w" secondAttribute="bottom" constant="8" symbolic="YES" id="oeD-ME-JBw"/>
                             <constraint firstItem="zTa-AH-lkg" firstAttribute="centerX" secondItem="IJl-gD-r4w" secondAttribute="centerX" id="qrA-c8-in3"/>
                             <constraint firstItem="nX1-l6-YVd" firstAttribute="leading" secondItem="Ady-dc-tDY" secondAttribute="leading" id="su8-mF-eRG"/>

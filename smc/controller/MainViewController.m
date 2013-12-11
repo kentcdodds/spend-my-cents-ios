@@ -141,7 +141,7 @@
 }
 
 - (void)doSearch {
-    [self showMessage:@"Searching" :@"Please Wait" :TSMessageNotificationDurationEndless :TSMessageNotificationTypeMessage];
+    [self showMessage:@"Searching" :@"Please wait..." :TSMessageNotificationDurationEndless :TSMessageNotificationTypeMessage];
     
 
     NSURLSession *session = [NSURLSession sharedSession];
@@ -155,7 +155,6 @@
     }
     NSString *urlTemplate = @"http://www.spendmycents.com/products?simplifyResponse=true&searchIndex=%@&price=%d&itemPage=%d";
     NSString *formattedUrl = [NSString stringWithFormat:urlTemplate, category, price, self.itemPage];
-    NSLog(@"%@", formattedUrl);
     NSURL *url = [NSURL URLWithString:formattedUrl];
     [[UIApplication sharedApplication] setNetworkActivityIndicatorVisible:YES];
     NSURLSessionDataTask *task = [session dataTaskWithURL:url completionHandler:^(NSData *data, NSURLResponse *response, NSError *error) {
@@ -229,7 +228,6 @@
         [cell.productCardView.loadingIndicator stopAnimating];
     } else {
         NSDictionary *product = self.products[indexPath.item];
-        NSLog(@"%d - %@", indexPath.item, product[@"ASIN"]);
         [self setCellImage:cell withProduct:product];
     }
     return cell;

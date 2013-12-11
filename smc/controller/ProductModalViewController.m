@@ -34,5 +34,14 @@
     [[UIApplication sharedApplication] openURL:[NSURL URLWithString:self.product[@"url"]]];
 }
 
+- (IBAction)share:(id)sender {
+    NSString *textToShare = [NSString stringWithFormat:@"%@\n\n%@ - Found using the iOS app of SpendMyCents.com, the new reverse product search web app.", self.product[@"url"], self.product[@"title"]];
+    UIImage *imageToShare = self.productImage;
+    NSArray *itemsToShare = @[textToShare, imageToShare];
+    UIActivityViewController *activityVC = [[UIActivityViewController alloc] initWithActivityItems:itemsToShare applicationActivities:nil];
+    activityVC.excludedActivityTypes = @[UIActivityTypeAssignToContact];
+    [self presentViewController:activityVC animated:YES completion:nil];
+}
+
 
 @end
