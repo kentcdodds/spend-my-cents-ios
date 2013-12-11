@@ -17,7 +17,7 @@
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
                             <collectionView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" minimumZoomScale="0.0" maximumZoomScale="0.0" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="hlB-ao-U9A">
-                                <rect key="frame" x="20" y="180" width="280" height="280"/>
+                                <rect key="frame" x="20" y="157" width="280" height="303"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="20" minimumInteritemSpacing="20" id="oxI-8a-IwU">
@@ -38,7 +38,11 @@
                                                     <rect key="frame" x="0.0" y="0.0" width="120" height="150"/>
                                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                     <subviews>
-                                                        <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="no-image-available.png" translatesAutoresizingMaskIntoConstraints="NO" id="DFI-rX-fbe">
+                                                        <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" hidesWhenStopped="YES" animating="YES" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="axR-rs-f8t">
+                                                            <rect key="frame" x="50" y="65" width="20" height="20"/>
+                                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                        </activityIndicatorView>
+                                                        <imageView userInteractionEnabled="NO" alpha="0.0" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="no-image-available.png" translatesAutoresizingMaskIntoConstraints="NO" id="DFI-rX-fbe">
                                                             <rect key="frame" x="0.0" y="0.0" width="120" height="150"/>
                                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                         </imageView>
@@ -57,6 +61,7 @@
                                                     <connections>
                                                         <outlet property="button" destination="DIu-Xs-Ge0" id="NbR-GX-89p"/>
                                                         <outlet property="imageView" destination="DFI-rX-fbe" id="Udf-Gi-ZGm"/>
+                                                        <outlet property="loadingIndicator" destination="axR-rs-f8t" id="8t7-Ms-lG6"/>
                                                     </connections>
                                                 </view>
                                             </subviews>
@@ -122,7 +127,7 @@
                         <constraints>
                             <constraint firstItem="P56-e9-G0f" firstAttribute="leading" secondItem="s4c-vP-c6R" secondAttribute="trailing" constant="8" symbolic="YES" id="59n-tw-Rah"/>
                             <constraint firstAttribute="trailing" secondItem="KKJ-1A-acj" secondAttribute="trailing" constant="20" symbolic="YES" id="5wN-7H-aJU"/>
-                            <constraint firstItem="hlB-ao-U9A" firstAttribute="top" secondItem="fFE-L9-UsC" secondAttribute="bottom" constant="37" id="62c-KK-THu"/>
+                            <constraint firstItem="hlB-ao-U9A" firstAttribute="top" secondItem="fFE-L9-UsC" secondAttribute="bottom" constant="14" id="62c-KK-THu"/>
                             <constraint firstItem="P56-e9-G0f" firstAttribute="top" secondItem="s4c-vP-c6R" secondAttribute="top" id="7YM-2m-ZRY"/>
                             <constraint firstItem="P56-e9-G0f" firstAttribute="bottom" secondItem="s4c-vP-c6R" secondAttribute="bottom" id="BtJ-Jb-fUQ"/>
                             <constraint firstItem="KKJ-1A-acj" firstAttribute="leading" secondItem="xHW-jk-mqj" secondAttribute="leading" constant="20" symbolic="YES" id="CPv-pt-Ltf"/>
@@ -221,6 +226,9 @@
                             <navigationBar contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="zTa-AH-lkg">
                                 <rect key="frame" x="0.0" y="19" width="320" height="44"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
+                                <textAttributes key="titleTextAttributes">
+                                    <fontDescription key="fontDescription" name="HelveticaNeue-UltraLight" family="Helvetica Neue" pointSize="24"/>
+                                </textAttributes>
                                 <items>
                                     <navigationItem title="Product Details" id="iSr-ci-E5Q">
                                         <barButtonItem key="leftBarButtonItem" systemItem="done" id="ixp-v2-PkG">

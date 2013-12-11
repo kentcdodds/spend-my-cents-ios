@@ -11,6 +11,7 @@
 #import "ProductCardView.h"
 #import "ProductModalViewController.h"
 #import "CategorySelectionViewController.h"
+#import "TSMessage.h"
 
 @interface MainViewController () <UICollectionViewDataSource, UIGestureRecognizerDelegate, SetCategoryDelegate>
 
@@ -98,12 +99,11 @@
     [self doSearch];
 }
 
--(void)handleReturnedData:(NSData *)data resp:(NSURLResponse *) response err:(NSError *) error append:(bool) append {
+- (void)handleReturnedData:(NSData *)data resp:(NSURLResponse *) response err:(NSError *) error append:(bool) append {
     if (!error) {
         NSError *jsonError = nil;
         NSArray *products = [NSJSONSerialization JSONObjectWithData:data options:0 error:&jsonError];
         if (!jsonError && [products isKindOfClass:[NSArray class]]) {
-            NSLog(@"Success!");
             if (append) {
                 NSMutableArray *allProducts = [NSMutableArray arrayWithArray: self.products];
                 [allProducts addObjectsFromArray: products];
@@ -115,14 +115,35 @@
                 [self.productsCollectionView reloadData];
             });
         } else {
-            NSLog(@"There was problem with the response");
+            dispatch_async(dispatch_get_main_queue(), ^{
+                [self showMessage:@"Error" :@"There was a problem with the response" :2 :TSMessageNotificationTypeError];
+            });
         }
     } else {
-        NSLog(@"There was a problem with the request");
+        dispatch_async(dispatch_get_main_queue(), ^{
+            [self showMessage:@"Error" :@"There was a problem with the request" :2 :TSMessageNotificationTypeError];
+        });
     }
 }
 
--(void)doSearch {
+-(void)showMessage:(NSString *)title :(NSString *)description :(int)duration :(TSMessageNotificationType)type {
+    [TSMessage showNotificationInViewController:self
+                                          title:NSLocalizedString(title, nil)
+                                       subtitle:NSLocalizedString(description, nil)
+                                          image:nil
+                                           type:type
+                                       duration:duration
+                                       callback:nil
+                                    buttonTitle:nil
+                                 buttonCallback:nil
+                                     atPosition:TSMessageNotificationPositionTop
+                            canBeDismisedByUser:YES];
+}
+
+- (void)doSearch {
+    [self showMessage:@"Searching" :@"Please Wait" :TSMessageNotificationDurationEndless :TSMessageNotificationTypeMessage];
+    
+
     NSURLSession *session = [NSURLSession sharedSession];
     int price = [self.searchField.text doubleValue] * 100;
     NSString *category = self.categories[self.selectedCategoryIndex];
@@ -139,6 +160,7 @@
     [[UIApplication sharedApplication] setNetworkActivityIndicatorVisible:YES];
     NSURLSessionDataTask *task = [session dataTaskWithURL:url completionHandler:^(NSData *data, NSURLResponse *response, NSError *error) {
         [[UIApplication sharedApplication] setNetworkActivityIndicatorVisible:NO];
+        [TSMessage dismissActiveNotification];
         [self handleReturnedData:data resp:response err:error append:self.itemPage != 1];
     }];
     [task resume];
@@ -177,7 +199,9 @@
         }
         
         dispatch_async(dispatch_get_main_queue(), ^{
+            [cell.productCardView.loadingIndicator stopAnimating];
             cell.productCardView.imageView.image = self.imageCache[imageUrl];
+            cell.productCardView.imageView.alpha = 1;
         });
     });
 }
@@ -202,6 +226,7 @@
     if (indexPath.item >= [self.products count]) {
         cell.productCardView.imageView.alpha = 0;
         cell.productCardView.button.alpha = 1;
+        [cell.productCardView.loadingIndicator stopAnimating];
     } else {
         NSDictionary *product = self.products[indexPath.item];
         NSLog(@"%d - %@", indexPath.item, product[@"ASIN"]);
