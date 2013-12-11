@@ -14,14 +14,4 @@
 
 @implementation ProductCardCollectionViewCell
 
-
-- (void) setupCellWithProduct:(NSDictionary *)product {
-    [self.productCardView setupWithProduct:product];
-}
-
-- (void) setLabelText: (NSString *) s {
-    //self.label.text = s;
-}
-
-
 @end

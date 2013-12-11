@@ -11,8 +11,8 @@
 @interface ProductCardView : UIView
 
 @property (nonatomic, getter = isFaceUp) BOOL faceUp;
-
-- (void) setupWithProduct: (NSDictionary *)product;
-- (NSString *) getCardContents;
+@property (weak, nonatomic) IBOutlet UIImageView *imageView;
+@property (weak, nonatomic) IBOutlet UILabel *label;
+@property (weak, nonatomic) IBOutlet UIButton *button;
 
 @end
