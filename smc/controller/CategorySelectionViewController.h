@@ -14,13 +14,13 @@
 @interface CategorySelectionViewController : UIViewController
 
 @property (strong, nonatomic) id <SetCategoryDelegate> delegate;
-@property (weak, nonatomic) NSArray *categories;
-@property (nonatomic) int selectedCategoryIndex;
 
 @end
 
 @protocol SetCategoryDelegate <NSObject>
 
 - (void)setCategoryIndex:(int)index;
+- (NSArray *)getCategories;
+- (int)getCategoryIndex;
 
 @end

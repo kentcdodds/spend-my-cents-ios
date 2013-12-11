@@ -33,6 +33,8 @@
 
 @implementation MainViewController
 
+#pragma mark - Properties
+
 - (dispatch_queue_t)downloadQueue {
     if (!_downloadQueue) {
         _downloadQueue = dispatch_queue_create("image downloader", NULL);
@@ -48,6 +50,8 @@
     
     return _imageCache;
 }
+
+#pragma mark - UI methods
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -81,12 +85,6 @@
     self.selectedCardIndex = -1;
 }
 
-- (void)setCategoryIndex:(int)index {
-    self.selectedCategoryIndex = index;
-    if (self.selectedCategoryIndex > -1) {
-        [self.categoryButton setTitle:self.categories[self.selectedCategoryIndex] forState:UIControlStateNormal];
-    }
-}
 
 - (IBAction)searchButtonPressed:(id)sender {
     [self.searchField resignFirstResponder];
@@ -143,7 +141,7 @@
 - (void)doSearch {
     [self showMessage:@"Searching" :@"Please wait..." :TSMessageNotificationDurationEndless :TSMessageNotificationTypeMessage];
     
-
+    
     NSURLSession *session = [NSURLSession sharedSession];
     int price = [self.searchField.text doubleValue] * 100;
     NSString *category = self.categories[self.selectedCategoryIndex];
@@ -151,7 +149,7 @@
         category = @"All";
     } else {
         category = [category stringByReplacingOccurrencesOfString:@" "
-                                             withString:@""];
+                                                       withString:@""];
     }
     NSString *urlTemplate = @"http://www.spendmycents.com/products?simplifyResponse=true&searchIndex=%@&price=%d&itemPage=%d";
     NSString *formattedUrl = [NSString stringWithFormat:urlTemplate, category, price, self.itemPage];
@@ -168,8 +166,6 @@
 - (IBAction)categoryTapped:(id)sender {
     UIStoryboard *storyBoard = [self storyboard];
     CategorySelectionViewController *modal  = [storyBoard instantiateViewControllerWithIdentifier:@"CategorySelectionView"];
-    modal.categories = self.categories;
-    modal.selectedCategoryIndex = self.selectedCategoryIndex;
     modal.delegate = self;
     [self presentViewController:modal animated:YES completion:nil];
 }
@@ -188,21 +184,21 @@
     }
 }
 
-- (void) setCellImage: (ProductCardCollectionViewCell *)cell withProduct:(NSDictionary *)product {
-    NSString *imageUrl = product[@"imageUrl"];
-    dispatch_async(self.downloadQueue, ^{
-        if (!self.imageCache[imageUrl]) {
-            // If the image for the given URL isn't already cached, get it now
-            NSData *imageData = [NSData dataWithContentsOfURL:[NSURL URLWithString:imageUrl]];
-            self.imageCache[imageUrl] = [UIImage imageWithData:imageData];
-        }
-        
-        dispatch_async(dispatch_get_main_queue(), ^{
-            [cell.productCardView.loadingIndicator stopAnimating];
-            cell.productCardView.imageView.image = self.imageCache[imageUrl];
-            cell.productCardView.imageView.alpha = 1;
-        });
-    });
+# pragma mark - category delegate methods
+
+- (void)setCategoryIndex:(int)index {
+    self.selectedCategoryIndex = index;
+    if (self.selectedCategoryIndex > -1) {
+        [self.categoryButton setTitle:self.categories[self.selectedCategoryIndex] forState:UIControlStateNormal];
+    }
+}
+
+- (int)getCategoryIndex {
+    return self.selectedCategoryIndex;
+}
+
+- (NSArray *)getCategories {
+    return self.categories;
 }
 
 # pragma mark - collection view delegate methods
@@ -232,5 +228,23 @@
     }
     return cell;
 }
+
+- (void) setCellImage: (ProductCardCollectionViewCell *)cell withProduct:(NSDictionary *)product {
+    NSString *imageUrl = product[@"imageUrl"];
+    dispatch_async(self.downloadQueue, ^{
+        if (!self.imageCache[imageUrl]) {
+            // If the image for the given URL isn't already cached, get it now
+            NSData *imageData = [NSData dataWithContentsOfURL:[NSURL URLWithString:imageUrl]];
+            self.imageCache[imageUrl] = [UIImage imageWithData:imageData];
+        }
+        
+        dispatch_async(dispatch_get_main_queue(), ^{
+            [cell.productCardView.loadingIndicator stopAnimating];
+            cell.productCardView.imageView.image = self.imageCache[imageUrl];
+            cell.productCardView.imageView.alpha = 1;
+        });
+    });
+}
+
 
 @end

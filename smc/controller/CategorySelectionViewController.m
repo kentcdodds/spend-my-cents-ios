@@ -10,6 +10,8 @@
 
 @interface CategorySelectionViewController () <UIPickerViewDelegate, UIPickerViewDataSource>
 @property (weak, nonatomic) IBOutlet UIPickerView *categorySelection;
+@property (weak, nonatomic) NSArray *categories;
+@property (nonatomic) int selectedCategoryIndex;
 @end
 
 @implementation CategorySelectionViewController
@@ -17,7 +19,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
 	
-    [self.categorySelection selectRow:self.selectedCategoryIndex inComponent:0 animated:NO];
+    [self.categorySelection selectRow:[self.delegate getCategoryIndex] inComponent:0 animated:NO];
 }
 
 - (IBAction)doneTapped:(id)sender {
@@ -34,10 +36,10 @@
 }
 
 - (NSInteger)pickerView:(UIPickerView *)pickerView numberOfRowsInComponent:(NSInteger)component {
-    return [self.categories count];
+    return [[self.delegate getCategories] count];
 }
 
 - (NSString *)pickerView:(UIPickerView *)pickerView titleForRow:(NSInteger)row forComponent:(NSInteger)component {
-    return self.categories[row];
+    return [self.delegate getCategories][row];
 }
 @end
