@@ -13,5 +13,6 @@
 @property (weak, nonatomic) IBOutlet ProductCardView *productCardView;
 
 - (void) setupCellWithProduct: (NSDictionary *) product;
+- (void) setLabelText: (NSString *) s;
 
 @end

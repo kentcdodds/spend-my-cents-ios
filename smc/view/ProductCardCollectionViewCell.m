@@ -9,7 +9,6 @@
 #import "ProductCardCollectionViewCell.h"
 
 @interface ProductCardCollectionViewCell()
-@property (weak, nonatomic) IBOutlet UILabel *label;
 
 @end
 
@@ -17,11 +16,11 @@
 
 
 - (void) setupCellWithProduct:(NSDictionary *)product {
-    //[self.productCardView setupWithProduct:product];
-    
-    //NSString *contents = [self.productCardView getCardContents];
-//    self.label.text = contents;
-    self.label.text = @"Hi!";
+    [self.productCardView setupWithProduct:product];
+}
+
+- (void) setLabelText: (NSString *) s {
+    //self.label.text = s;
 }
 
 

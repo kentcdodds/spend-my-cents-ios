@@ -66,7 +66,7 @@
     NSString *category = @"All";
     NSString *urlTemplate = @"http://www.spendmycents.com/products?simplifyResponse=true&searchIndex=%@&price=%d&itemPage=%d";
     NSString *formattedUrl = [NSString stringWithFormat:urlTemplate, category, price, self.itemPage];
-    NSLog(formattedUrl);
+    //NSLog(formattedUrl);
     NSURL *url = [NSURL URLWithString:formattedUrl];
     NSURLSessionDataTask *task = [session dataTaskWithURL:url completionHandler:^(NSData *data, NSURLResponse *response, NSError *error) {
         [self handleReturnedData:data resp:response err:error append:self.itemPage != 1];
@@ -86,7 +86,7 @@
 
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath {
     ProductCardCollectionViewCell *cell = (ProductCardCollectionViewCell *)[collectionView dequeueReusableCellWithReuseIdentifier:@"ProductCardCell" forIndexPath:indexPath];
-    [cell setupCellWithProduct:self.products[indexPath.item]];
+    [cell.productCardView setupWithProduct:self.products[indexPath.item]];
     return cell;
 }
 
